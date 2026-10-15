@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Management</title>
+    <title>Book Management</title>
 </head>
 <body>
-    <h1>Student Management System</h1>
+    <h1>Book Management System</h1>
 
-    <a href="{% url 'student_create' %}">
-        Add Student
+    <a href="{% url 'book_create' %}">
+        Add Book
     </a>
 
     <hr>
 
     <table border="1" cellpadding="10">
         <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Department</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
             <th>Actions</th>
         </tr>
 
-        {% for student in students %}
+        {% for book in books %}
         <tr>
-            <td>{{ student.name }}</td>
-            <td>{{ student.email }}</td>
-            <td>{{ student.department }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.price }}</td>
             <td>
-                <a href="{% url 'student_update' student.id %}">
+                <a href="{% url 'book_update' book.id %}">
                     Edit
                 </a>
 
                 <form method="POST"
-                      action="{% url 'student_delete' student.id %}"
+                      action="{% url 'book_delete' book.id %}"
                       style="display:inline;">
                     {% csrf_token %}
                     <button type="submit">Delete</button>
